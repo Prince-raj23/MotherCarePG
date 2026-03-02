@@ -1,7 +1,7 @@
-import React from 'react';
+import type { FC, ReactNode } from 'react';
 import { Clock, ShieldCheck, Droplets, Bike, Shirt, Sparkles, UtensilsCrossed } from 'lucide-react';
 
-const AboutUs: React.FC = () => {
+const AboutUs: FC = () => {
   return (
     <div className="bg-white min-h-screen font-sans text-slate-800">
       {/* --- HERO SECTION --- */}
@@ -111,7 +111,7 @@ const AboutUs: React.FC = () => {
 };
 
 // Reusable Facility Card Component
-const FacilityCard: React.FC<{ img: string; icon: React.ReactNode; title: string; content: React.ReactNode }> = ({ img, icon, title, content }) => (
+const FacilityCard: FC<{ img: string; icon: ReactNode; title: string; content: ReactNode }> = ({ img, icon, title, content }) => (
   <div className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100">
     <div className="h-56 overflow-hidden relative">
       <img src={img} alt={title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />

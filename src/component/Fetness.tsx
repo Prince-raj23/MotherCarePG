@@ -1,4 +1,3 @@
-import React from 'react';
 import { BookOpen, Dumbbell, Clock, Flame, Apple, Trophy } from 'lucide-react';
 
 const FitnessDashboard = () => {
