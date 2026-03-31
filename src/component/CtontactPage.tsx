@@ -1,8 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Phone, Send, MessageCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
-const ContactUs: React.FC = () => {
+const ContactUs = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
 

@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom';
+
 const PricingDashboard = () => {
+  const navigate = useNavigate();
+
   const plans = [
     {
       title: "Essential Stay",
@@ -33,104 +37,121 @@ const PricingDashboard = () => {
   ];
 
   return (
-    <section className="bg-slate-50 min-h-screen w-full flex flex-col justify-center py-6 px-4 md:px-10 overflow-hidden">
+    <section className="bg-slate-50 min-h-screen w-full flex flex-col justify-center py-24 px-4 md:px-10 overflow-hidden">
       <div className="max-w-7xl mx-auto w-full">
-        
-        {/* Header Section - Compact */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
-          <div className="max-w-xl">
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-none">
-              Mother Care <span className="text-blue-600">Residence.</span>
+
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+          <div className="max-w-2xl">
+            <span className="inline-block px-4 py-1 rounded-full bg-primary-100 text-primary-700 text-xs font-bold tracking-widest uppercase mb-4">
+              Transparent Pricing
+            </span>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+              Mother Care <span className="text-primary-600">Residence.</span>
             </h2>
-            <p className="text-slate-500 font-medium text-sm mt-2">
-              Premium student living with transparent property rates.
+            <p className="text-slate-500 font-medium text-lg mt-4 leading-relaxed">
+              Premium student living with transparent property rates. No hidden charges, just pure comfort.
             </p>
           </div>
 
-          {/* Floating Deposit Badge - Smaller for Screen Fit */}
-          <div className="bg-white shadow-lg border border-slate-100 p-3 rounded-2xl flex items-center gap-3 animate-bounce-slow max-w-fit">
-            <div className="h-10 w-10 bg-amber-100 rounded-xl flex items-center justify-center text-amber-600 text-lg font-bold">₹</div>
+          {/* Floating Deposit Badge */}
+          <div className="bg-white shadow-2xl shadow-primary-900/10 border border-primary-100 p-6 rounded-[2rem] flex items-center gap-4 animate-bounce-slow max-w-fit">
+            <div className="h-14 w-14 bg-primary-600 rounded-2xl flex items-center justify-center text-white text-2xl font-black shadow-lg shadow-primary-600/30">₹</div>
             <div>
-              <p className="text-[8px] uppercase font-black text-slate-400 tracking-widest">Refundable Deposit</p>
-              <p className="text-lg font-black text-slate-800 leading-none">₹5,000</p>
+              <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-1">Refundable Deposit</p>
+              <p className="text-2xl font-black text-slate-900 leading-none">₹5,000</p>
             </div>
           </div>
         </div>
 
-        {/* Pricing Cards Grid - Responsive & Screen Fitting */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        {/* Pricing Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map((plan, i) => (
-            <div 
-              key={i} 
-              className={`relative group rounded-[2rem] p-0.5 transition-all duration-500 ${
-                plan.isFeatured 
-                ? 'bg-gradient-to-br from-blue-500 to-indigo-600 shadow-2xl scale-100 md:scale-105 z-10' 
-                : 'bg-white shadow-md border border-slate-100'
-              }`}
+            <div
+              key={i}
+              className={`relative group rounded-[2.5rem] p-px transition-all duration-500 ${plan.isFeatured
+                  ? 'bg-gradient-to-br from-primary-500 to-indigo-600 shadow-2xl scale-100 md:scale-105 z-10'
+                  : 'bg-white shadow-xl shadow-slate-200/50 border border-slate-100 hover:border-primary-200'
+                }`}
             >
-              <div className="bg-white rounded-[1.9rem] h-full p-6 md:p-8 flex flex-col justify-between">
-                
+              <div className="bg-white rounded-[2.4rem] h-full p-10 flex flex-col justify-between">
+
                 <div>
                   {/* Plan Title & Tag */}
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="flex justify-between items-start mb-8">
                     <div>
-                      <h3 className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1">{plan.title}</h3>
-                      <p className="text-xl md:text-2xl font-bold text-slate-800">{plan.duration}</p>
+                      <h3 className="text-primary-600 text-[10px] font-black uppercase tracking-widest mb-2">{plan.title}</h3>
+                      <p className="text-2xl font-black text-slate-900">{plan.duration}</p>
                     </div>
-                    <span className={`text-[9px] font-black px-2 py-1 rounded-md uppercase tracking-tighter ${
-                      plan.isFeatured ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'
-                    }`}>
+                    <span className={`text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider ${plan.isFeatured ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/30' : 'bg-slate-100 text-slate-500'
+                      }`}>
                       {plan.tag}
                     </span>
                   </div>
 
                   {/* Price Display */}
-                  <div className="mb-6">
+                  <div className="mb-10">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-4xl md:text-5xl font-black text-slate-900 leading-none tracking-tighter">₹{plan.currentPrice}</span>
+                      <span className="text-5xl font-black text-slate-900 leading-none tracking-tighter">₹{plan.currentPrice}</span>
                       {plan.originalPrice && (
-                        <span className="text-lg text-slate-300 line-through font-bold">₹{plan.originalPrice}</span>
+                        <span className="text-xl text-slate-300 line-through font-bold">₹{plan.originalPrice}</span>
                       )}
                     </div>
                     {plan.savings && (
-                      <p className="text-green-600 text-[10px] font-bold mt-1 uppercase tracking-tight">Save ₹{plan.savings} Instantly</p>
+                      <div className="inline-block bg-green-50 text-green-700 text-[11px] font-black mt-3 px-3 py-1 rounded-full uppercase tracking-tight border border-green-100">
+                        Save ₹{plan.savings} Instantly
+                      </div>
                     )}
                   </div>
 
                   {/* Unique Features List */}
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feat, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-slate-600 font-medium text-xs">
-                        <div className="h-1.5 w-1.5 rounded-full bg-blue-500 shrink-0"></div>
-                        {feat}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="space-y-4 mb-10">
+                    <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest">Included Facilities</p>
+                    <ul className="space-y-4">
+                      {plan.features.map((feat, idx) => (
+                        <li key={idx} className="flex items-center gap-3 text-slate-600 font-semibold text-sm">
+                          <div className={`h-2 w-2 rounded-full ${plan.isFeatured ? 'bg-primary-600' : 'bg-slate-300'} shrink-0`}></div>
+                          {feat}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
                 {/* Action Button */}
-                <button className={`w-full py-3.5 rounded-xl font-black text-xs uppercase tracking-[2px] transition-all active:scale-95 ${
-                  plan.isFeatured 
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-200 hover:bg-blue-700' 
-                  : 'bg-slate-900 text-white hover:bg-black'
-                }`}>
-                  Secure {plan.duration}
+                <button
+                  onClick={() => navigate('/contact')}
+                  className={`w-full py-5 rounded-2xl font-black text-[11px] uppercase tracking-[2px] transition-all active:scale-95 group-hover:scale-[1.02] ${plan.isFeatured
+                      ? 'bg-primary-600 text-white shadow-xl shadow-primary-600/40 hover:bg-primary-700'
+                      : 'bg-slate-900 text-white shadow-xl shadow-slate-900/20 hover:bg-black'
+                    }`}
+                >
+                  Book {plan.duration} Stay
                 </button>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Footer Note - Compact */}
-        <p className="text-center mt-8 text-slate-400 text-[10px] font-bold uppercase tracking-[4px]">
-          — Official Property Rates 2026 —
-        </p>
+        {/* Footer Note */}
+        <div className="mt-20 text-center">
+          <p className="text-slate-400 text-[11px] font-black uppercase tracking-[6px] mb-4">
+            — Official Property Rates 2026 —
+          </p>
+          <div className="inline-flex items-center gap-2 text-primary-600 font-bold text-sm bg-primary-50 px-6 py-2 rounded-full border border-primary-100">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
+            </span>
+            Available for Booking
+          </div>
+        </div>
       </div>
 
       <style>{`
         @keyframes bounce-slow {
           0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-5px); }
+          50% { transform: translateY(-10px); }
         }
         .animate-bounce-slow {
           animation: bounce-slow 4s ease-in-out infinite;

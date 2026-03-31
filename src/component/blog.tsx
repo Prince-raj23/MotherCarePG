@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Calendar, User, ArrowRight, } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
+import { Calendar, User, ArrowRight } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 interface BlogPost {
@@ -51,7 +51,7 @@ const posts: BlogPost[] = [
   }
 ];
 
-const BlogPage: React.FC = () => {
+const BlogPage = () => {
   const newsletterRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
   const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
